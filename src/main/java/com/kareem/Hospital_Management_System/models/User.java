@@ -12,13 +12,12 @@ import lombok.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String username;
-    private String email;
     @Column(name = "national_id", unique = true)
     private String nationalId;
+
+    private String name;
+    private String email;
+
     private String password;
 
     @Enumerated(EnumType.STRING)

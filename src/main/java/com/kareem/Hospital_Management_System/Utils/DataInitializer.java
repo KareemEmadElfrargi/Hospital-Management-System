@@ -19,9 +19,9 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (userRepository.findByUsername("admin").isEmpty()) {
+        if (userRepository.findByName("admin").isEmpty()) {
             User admin = User.builder()
-                    .username("admin")
+                    .name("admin")
                     .nationalId("38360329")
                     .password(passwordEncoder.encode("38360329"))
                     .role(Role.ADMIN)

@@ -1,16 +1,19 @@
 package com.kareem.Hospital_Management_System.models;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Builder
+@Table(name = "shifts")
+
 public class Shift {
 
     @Id
@@ -20,10 +23,10 @@ public class Shift {
     @Enumerated(EnumType.STRING)
     private ShiftType type;
 
-    private LocalDate date;
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime  endTime;
 
     @ManyToOne
+    @JoinColumn(name = "nurse_national_id")
     private Nurse nurse;
 }

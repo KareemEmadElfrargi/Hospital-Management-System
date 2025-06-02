@@ -12,23 +12,23 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
+@Table(name = "nurses")
 public class Nurse {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "national_id", unique = true)
+    private String nationalId;
 
     private String name;
     private String phone;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "national_id", referencedColumnName = "national_id")
     private User user;
 
-    @OneToMany(mappedBy = "nurse")
+    @OneToMany(mappedBy = "nurse", cascade = CascadeType.ALL)
     private List<Shift> shifts;
 
-    @ManyToMany
-    private List<Patient> patients;
+
 
 }

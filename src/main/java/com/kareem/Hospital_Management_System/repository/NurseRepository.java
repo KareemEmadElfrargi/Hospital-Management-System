@@ -1,4 +1,11 @@
 package com.kareem.Hospital_Management_System.repository;
 
-public interface NurseRepository {
+import com.kareem.Hospital_Management_System.models.Nurse;
+import com.kareem.Hospital_Management_System.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface NurseRepository extends JpaRepository<Nurse, String> {
+    Optional<Nurse> findByUser_NationalId(String nurseNationalId);
 }
