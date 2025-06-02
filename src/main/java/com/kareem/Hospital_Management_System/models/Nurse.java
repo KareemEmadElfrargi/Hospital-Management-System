@@ -1,9 +1,7 @@
 package com.kareem.Hospital_Management_System.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Nurse {
 
     @Id
@@ -22,6 +22,7 @@ public class Nurse {
     private String phone;
 
     @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "nurse")
@@ -29,4 +30,5 @@ public class Nurse {
 
     @ManyToMany
     private List<Patient> patients;
+
 }

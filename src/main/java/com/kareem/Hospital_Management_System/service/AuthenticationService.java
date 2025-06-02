@@ -5,7 +5,6 @@ import com.kareem.Hospital_Management_System.dto.LoginRequest;
 import com.kareem.Hospital_Management_System.models.Role;
 import com.kareem.Hospital_Management_System.models.User;
 import com.kareem.Hospital_Management_System.repository.UserRepository;
-import com.kareem.Hospital_Management_System.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,14 +38,17 @@ public class AuthenticationService {
             throw new RuntimeException("Username already exists");
         }
 
-        User nurse = User.builder()
+        User nurseUser = User.builder()
                 .username(request.getUsername())
                 .nationalId(request.getNationalId())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.NURSE)
                 .build();
 
-        userRepository.save(nurse);
+
+        userRepository.save(nurseUser);
+
+
         return "Nurse created successfully";
     }
 }
