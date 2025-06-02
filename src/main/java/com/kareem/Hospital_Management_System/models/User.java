@@ -17,6 +17,7 @@ public class User {
 
     private String username;
     private String email;
+    @Column(name = "national_id", unique = true)
     private String nationalId;
     private String password;
 
